@@ -1,0 +1,4 @@
+### 1.2 Add such a sentence (you need to modify the text) right after the spawner.spawn (...);
+![Image when theres a print outside of the spawn method](/images/1_2.png)
+
+Pesan "Cleo's Computer: outside spawn" muncul lebih dulu karena letaknya setelah pemanggilan spawner.spawn(...) tetapi sebelum executor.run(), sehingga langsung dijalankan oleh thread utama. Sementara itu, pesan "howdy!" dan "done!" merupakan bagian dari future yang baru akan dieksekusi saat executor dijalankan. Akibatnya, setelah mencetak "outside spawn", executor mulai memproses future—menampilkan "howdy!", menunggu 2 detik, lalu mencetak "done!". Urutan ini mencerminkan bahwa eksekusi future bersifat malas (lazy) dan membutuhkan executor untuk berjalan.
